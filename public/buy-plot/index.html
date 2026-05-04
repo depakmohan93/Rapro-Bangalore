@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Buy Plot in Bangalore — Vivo City | Rajam Property</title>
+  <meta name="description" content="Own your dream plot at Vivo City, Nelamangala — a first-of-its-kind Italian-inspired plotted township. BMRDA Approved. RERA Registered. 120+ Acres.">
+  <link rel="canonical" href="https://bangalore.rajamproperty.com/buy-plot">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    /* ─────────────────────────────────────────
+       DESIGN TOKENS
+    ───────────────────────────────────────── */
+    :root {
+      --green:     #529D46;
+      --green-dk:  #3d7a34;
+      --green-lt:  #eef7ec;
+      --green-mid: #c6e4c0;
+      --gold:      #b8902a;
+      --gold-lt:   #d4aa4a;
+      --black:     #111111;
+      --dark:      #2a2a2a;
+      --mid:       #555555;
+      --muted:     #888888;
+      --border:    #e4e4e4;
+      --bg:        #ffffff;
+      --bg-tint:   #f7fbf6;
+      --t-hero:    clamp(40px, 5.5vw, 72px);
+      --t-h2:      clamp(28px, 3.5vw, 48px);
+      --t-h3:      clamp(20px, 2vw, 28px);
+      --t-h4:      18px;
+      --t-lg:      18px;
+      --t-base:    16px;
+      --t-sm:      14px;
+      --t-xs:      12px;
+      --t-label:   11px;
+      --s1: 8px; --s2: 16px; --s3: 24px; --s4: 32px;
+      --s5: 48px; --s6: 64px; --s7: 80px; --s8: 96px; --s9: 120px;
+      --max-w: 1280px;
+      --gutter: 80px;
+      --radius: 4px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      font-size: var(--t-base);
+      font-weight: 400;
+      line-height: 1.6;
+      color: var(--dark);
+      background: var(--bg);
+      overflow-x: hidden;
+    }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    button { font-family: inherit; cursor: pointer; }
+
+    /* ── TYPOGRAPHY ── */
+    .label {
+      font-size: var(--t-label); font-weight: 600;
+      letter-spacing: .14em; text-transform: uppercase;
+      color: var(--green); display: flex; align-items: center; gap: 10px;
+    }
+    .label::before {
+      content: ''; display: block; width: 24px; height: 2px;
+      background: var(--green); flex-shrink: 0;
+    }
+    h2 {
+      font-size: var(--t-h2); font-weight: 600;
+      line-height: 1.15; letter-spacing: -.01em; color: var(--black);
+    }
+    h3 { font-size: var(--t-h3); font-weight: 600; line-height: 1.25; color: var(--black); }
+    h4 { font-size: var(--t-h4); font-weight: 600; color: var(--black); }
+    .body-lg { font-size: var(--t-lg); font-weight: 300; line-height: 1.75; color: var(--mid); }
+    .body    { font-size: var(--t-base); font-weight: 400; line-height: 1.7; color: var(--mid); }
+    .divider { width: 40px; height: 2px; background: var(--green); margin: var(--s3) 0; }
+
+    /* ── LAYOUT ── */
+    .container { width: 100%; max-width: var(--max-w); margin: 0 auto; padding: 0 var(--gutter); }
+    .section    { padding: var(--s9) 0; }
+    .section-sm { padding: var(--s7) 0; }
+
+    /* ── BUTTONS ── */
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 14px 28px; font-size: var(--t-sm); font-weight: 600;
+      letter-spacing: .06em; text-transform: uppercase;
+      border-radius: var(--radius); transition: background .2s, transform .15s;
+      border: none; white-space: nowrap;
+    }
+    .btn:hover { transform: translateY(-1px); }
+    .btn-green { background: var(--green); color: #fff; }
+    .btn-green:hover { background: var(--green-dk); }
+
+    /* ── REVEAL ── */
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity .6s ease, transform .6s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    /* ═══════════ NAV ═══════════ */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 300;
+      height: 64px; background: rgba(255,255,255,.96);
+      backdrop-filter: blur(12px); border-bottom: 1px solid var(--border);
+    }
+    .nav-inner { height: 100%; display: flex; align-items: center; justify-content: space-between; }
+    .nav-brand { display: flex; align-items: center; gap: 14px; }
+    .nav-brand img { height: 36px; width: auto; object-fit: contain; }
+    .nav-sep { width: 1px; height: 22px; background: var(--border); }
+    .nav-tag {
+      font-size: var(--t-label); font-weight: 600;
+      letter-spacing: .12em; text-transform: uppercase; color: var(--green);
+    }
+    .nav-links { display: flex; gap: var(--s5); align-items: center; }
+    .nav-links a {
+      font-size: var(--t-xs); font-weight: 500;
+      letter-spacing: .08em; text-transform: uppercase;
+      color: var(--mid); transition: color .15s;
+    }
+    .nav-links a:hover { color: var(--green); }
+    .nav-menu-btn {
+      display: none; background: none; border: none;
+      flex-direction: column; gap: 5px; padding: 4px;
+    }
+    .nav-menu-btn span {
+      display: block; width: 22px; height: 2px;
+      background: var(--dark); border-radius: 2px;
+    }
+    .nav-drawer {
+      display: none; position: fixed; top: 64px; left: 0; right: 0; z-index: 290;
+      background: #fff; border-bottom: 1px solid var(--border);
+      flex-direction: column; box-shadow: 0 8px 24px rgba(0,0,0,.08);
+    }
+    .nav-drawer.open { display: flex; }
+    .nav-drawer a {
+      padding: 16px 24px; font-size: var(--t-sm); font-weight: 500;
+      letter-spacing: .06em; text-transform: uppercase;
+      color: var(--dark); border-bottom: 1px solid var(--border); transition: background .15s;
+    }
+    .nav-drawer a:hover { background: var(--green-lt); color: var(--green); }
+    .nav-drawer .btn { margin: 16px 24px; width: calc(100% - 48px); justify-content: center; }
+
+    /* ═══════════ HERO ═══════════ */
+    .hero {
+      display: grid; grid-template-columns: 1fr 440px;
+      min-height: 100vh; padding-top: 64px;
+    }
+    .hero-left {
+      background:
+        radial-gradient(ellipse 80% 60% at 20% 110%, rgba(82,157,70,.18) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 50% at 85% -10%, rgba(184,144,42,.12) 0%, transparent 55%),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Ccircle cx='30' cy='30' r='0.8' fill='rgba(255,255,255,0.045)'/%3E%3Cpath d='M0 30h60M30 0v60' stroke='rgba(255,255,255,0.028)' stroke-width='0.5'/%3E%3C/svg%3E"),
+        #0e1410;
+      padding: var(--s7) var(--gutter);
+      display: flex; flex-direction: column; justify-content: center;
+      position: relative; overflow: hidden;
+    }
+    .hero-left::before {
+      content: ''; position: absolute; top: -160px; right: -160px;
+      width: 520px; height: 520px; border-radius: 50%;
+      border: 1px solid rgba(82,157,70,.18); pointer-events: none;
+    }
+    .hero-left::after {
+      content: ''; position: absolute; bottom: -100px; left: 20px;
+      width: 300px; height: 300px; border-radius: 50%;
+      border: 1px solid rgba(184,144,42,.1); pointer-events: none;
+    }
+    .hero-label {
+      font-size: var(--t-label); font-weight: 600; letter-spacing: .16em;
+      text-transform: uppercase; color: var(--green);
+      display: flex; align-items: center; gap: 10px; margin-bottom: var(--s4);
+    }
+    .hero-label::before { content: ''; width: 24px; height: 2px; background: var(--green); flex-shrink: 0; }
+    .hero-headline {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(44px, 5.5vw, 76px); font-weight: 500;
+      line-height: 1.05; color: #fff; margin-bottom: var(--s3);
+    }
+    .hero-headline em { font-style: italic; color: var(--gold-lt); }
+    .hero-sub {
+      font-size: var(--t-base); font-weight: 300; line-height: 1.75;
+      color: rgba(255,255,255,.55); max-width: 440px; margin-bottom: var(--s5);
+    }
+    .hero-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: var(--s6); }
+    .chip {
+      padding: 6px 14px; font-size: var(--t-xs); font-weight: 500;
+      letter-spacing: .08em; text-transform: uppercase;
+      border: 1px solid rgba(82,157,70,.35); color: rgba(255,255,255,.65); border-radius: 2px;
+    }
+    .hero-stats {
+      display: flex; gap: var(--s5);
+      padding-top: var(--s4); border-top: 1px solid rgba(255,255,255,.08);
+    }
+    .h-stat-n {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 36px; font-weight: 600; line-height: 1; color: #fff;
+    }
+    .h-stat-n sup { font-size: 16px; color: var(--green); }
+    .h-stat-l {
+      font-size: var(--t-xs); font-weight: 500; letter-spacing: .12em;
+      text-transform: uppercase; color: rgba(255,255,255,.35); margin-top: 4px;
+    }
+
+    /* HERO FORM */
+    .hero-right {
+      background: var(--bg-tint); border-left: 1px solid var(--border);
+      padding: var(--s6) var(--s5);
+      display: flex; flex-direction: column; justify-content: center;
+    }
+    .form-eyebrow {
+      font-size: var(--t-label); font-weight: 600; letter-spacing: .14em;
+      text-transform: uppercase; color: var(--green); margin-bottom: var(--s2);
+    }
+    .form-title { font-size: 22px; font-weight: 600; color: var(--black); margin-bottom: 6px; line-height: 1.3; }
+    .form-sub { font-size: var(--t-sm); color: var(--muted); font-weight: 300; margin-bottom: var(--s4); line-height: 1.6; }
+    .fg { margin-bottom: 14px; }
+    .fg label {
+      display: block; font-size: var(--t-xs); font-weight: 600;
+      letter-spacing: .1em; text-transform: uppercase; color: var(--mid); margin-bottom: 6px;
+    }
+    .fg input, .fg select {
+      width: 100%; padding: 12px 14px;
+      font-family: 'Poppins', sans-serif; font-size: var(--t-sm); font-weight: 400;
+      color: var(--dark); background: #fff; border: 1.5px solid var(--border);
+      border-radius: var(--radius); outline: none; transition: border-color .2s; appearance: none;
+    }
+    .fg input::placeholder { color: #bbb; }
+    .fg input:focus, .fg select:focus { border-color: var(--green); }
+    .fg select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23888' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat; background-position: right 14px center; padding-right: 40px;
+    }
+    .form-submit {
+      width: 100%; padding: 14px; background: var(--green); color: #fff;
+      font-family: 'Poppins', sans-serif; font-size: var(--t-xs); font-weight: 600;
+      letter-spacing: .14em; text-transform: uppercase; border: none;
+      border-radius: var(--radius); cursor: pointer; transition: background .2s; margin-top: 4px;
+    }
+    .form-submit:hover { background: var(--green-dk); }
+    .form-note { font-size: 11px; color: #bbb; text-align: center; margin-top: 12px; line-height: 1.5; }
+    .form-rera {
+      font-size: 10px; color: #ccc; margin-top: 14px; padding-top: 14px;
+      border-top: 1px solid var(--border); line-height: 1.6; letter-spacing: .02em;
+    }
+
+    /* ═══════════ MARQUEE ═══════════ */
+    .marquee-strip { background: var(--green); overflow: hidden; }
+    .marquee-track { display: flex; width: max-content; animation: mq 32s linear infinite; }
+    @keyframes mq { to { transform: translateX(-50%); } }
+    .mq-item {
+      display: flex; align-items: center; gap: 14px; padding: 13px 36px;
+      font-size: var(--t-xs); font-weight: 600; letter-spacing: .14em;
+      text-transform: uppercase; color: rgba(255,255,255,.9);
+      white-space: nowrap; border-right: 1px solid rgba(255,255,255,.15);
+    }
+    .mq-dot { width: 4px; height: 4px; border-radius: 50%; background: rgba(255,255,255,.6); flex-shrink: 0; }
+
+    /* ═══════════ IMAGE PANELS ═══════════ */
+    .img-panel { line-height: 0; overflow: hidden; }
+    .img-panel img { width: 100%; display: block; }
+
+    /* ═══════════ OVERVIEW ═══════════ */
+    .overview-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s7); align-items: center; }
+    .overview-img-wrap { position: relative; }
+    .overview-img-wrap img { width: 100%; height: 520px; object-fit: cover; border-radius: var(--radius); }
+    .overview-img-tag {
+      position: absolute; top: 20px; left: 20px; background: var(--green); color: #fff;
+      font-size: var(--t-xs); font-weight: 600; letter-spacing: .1em; text-transform: uppercase;
+      padding: 7px 14px; border-radius: 2px;
+    }
+    .overview-text { display: flex; flex-direction: column; gap: var(--s3); }
+    .stats-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 1px;
+      background: var(--border); border: 1px solid var(--border);
+      border-radius: var(--radius); overflow: hidden; margin-top: var(--s2);
+    }
+    .stat-cell { padding: 24px 20px; background: var(--bg); }
+    .stat-cell-n {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 36px; font-weight: 600; color: var(--black); line-height: 1;
+    }
+    .stat-cell-n sup { font-size: 16px; color: var(--green); }
+    .stat-cell-l {
+      font-size: var(--t-xs); font-weight: 600; letter-spacing: .1em;
+      text-transform: uppercase; color: var(--muted); margin-top: 4px;
+    }
+
+    /* ═══════════ AMENITIES ═══════════ */
+    .amenities-wrap { background: var(--bg-tint); }
+    .amenities-top {
+      display: grid; grid-template-columns: 1fr auto;
+      gap: var(--s5); align-items: end; margin-bottom: var(--s6);
+    }
+    .tabs-row {
+      display: flex; overflow-x: auto; border-bottom: 1px solid var(--border); scrollbar-width: none;
+    }
+    .tabs-row::-webkit-scrollbar { display: none; }
+    .tab-btn {
+      flex-shrink: 0; padding: 14px 24px; font-size: var(--t-xs); font-weight: 600;
+      letter-spacing: .1em; text-transform: uppercase; color: var(--muted);
+      background: none; border: none; border-bottom: 2px solid transparent;
+      margin-bottom: -1px; cursor: pointer; transition: color .15s, border-color .15s;
+    }
+    .tab-btn.active { color: var(--green); border-bottom-color: var(--green); }
+    .tab-btn:hover:not(.active) { color: var(--dark); }
+    .panels-wrap { margin-top: var(--s5); }
+    .panel {
+      display: none; grid-template-columns: 1fr 1fr;
+      border-radius: var(--radius); overflow: hidden; border: 1px solid var(--border);
+    }
+    .panel.active { display: grid; }
+    .panel-img { overflow: hidden; height: 500px; }
+    .panel-img img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s ease; }
+    .panel:hover .panel-img img { transform: scale(1.03); }
+    .panel-body {
+      padding: var(--s6); background: #fff;
+      display: flex; flex-direction: column; justify-content: center; gap: var(--s2);
+    }
+    .panel-body h3 { font-size: clamp(22px, 2.5vw, 32px); }
+    .panel-feats { display: flex; flex-direction: column; gap: 10px; margin-top: var(--s3); padding-top: var(--s3); border-top: 1px solid var(--border); }
+    .panel-feat { display: flex; align-items: center; gap: 12px; font-size: var(--t-sm); color: var(--dark); }
+    .panel-feat::before { content: ''; width: 6px; height: 6px; background: var(--green); border-radius: 50%; flex-shrink: 0; }
+    .tab-nav { display: flex; padding-top: var(--s3); }
+    .tab-nav-btn {
+      width: 44px; height: 44px; display: flex; align-items: center; justify-content: center;
+      border: 1.5px solid var(--border); background: #fff; font-size: 18px; color: var(--dark);
+      cursor: pointer; transition: all .15s;
+    }
+    .tab-nav-btn:first-child { border-right: none; border-radius: var(--radius) 0 0 var(--radius); }
+    .tab-nav-btn:last-child { border-radius: 0 var(--radius) var(--radius) 0; }
+    .tab-nav-btn:hover { background: var(--green); border-color: var(--green); color: #fff; }
+
+    /* ═══════════ PLOTS ═══════════ */
+    .site-map { border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; margin: var(--s6) 0; }
+    .site-map img { width: 100%; display: block; }
+    .districts-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden;
+    }
+    .district {
+      padding: var(--s5) var(--s4); border-right: 1px solid var(--border);
+      background: #fff; transition: background .2s;
+    }
+    .district:last-child { border-right: none; }
+    .district:hover { background: var(--bg-tint); }
+    .district-dot { width: 12px; height: 12px; border-radius: 50%; margin-bottom: var(--s3); }
+    .district h3 { font-size: 22px; margin-bottom: 10px; }
+    .district p { font-size: var(--t-sm); color: var(--muted); line-height: 1.65; }
+    .district-phase {
+      display: inline-block; margin-top: var(--s3); font-size: 10px; font-weight: 600;
+      letter-spacing: .12em; text-transform: uppercase;
+      color: var(--green); border-bottom: 1.5px solid var(--green-mid);
+    }
+
+    /* ═══════════ LOCATION ═══════════ */
+    .location-wrap { background: var(--bg-tint); }
+    .location-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s7); align-items: start; margin-top: var(--s6); }
+    .map-box { border-radius: var(--radius); overflow: hidden; border: 1px solid var(--border); }
+    .map-box iframe { width: 100%; height: 420px; display: block; border: none; }
+    .map-note { padding: var(--s3); background: #fff; border-top: 1px solid var(--border); }
+    .map-note p { font-size: var(--t-sm); color: var(--muted); line-height: 1.6; }
+    .map-note strong { color: var(--dark); font-weight: 600; }
+    .dist-list { display: flex; flex-direction: column; }
+    .dist-row { display: flex; align-items: center; gap: var(--s3); padding: 18px 0; border-bottom: 1px solid var(--border); }
+    .dist-row:first-child { padding-top: 0; }
+    .dist-icon {
+      width: 40px; height: 40px; background: var(--green-lt); border-radius: var(--radius);
+      display: flex; align-items: center; justify-content: center; font-size: 17px; flex-shrink: 0;
+    }
+    .dist-info h4 { font-size: var(--t-sm); font-weight: 600; color: var(--dark); margin-bottom: 2px; }
+    .dist-info p { font-size: var(--t-xs); color: var(--muted); }
+    .dist-time { margin-left: auto; font-size: var(--t-sm); font-weight: 600; color: var(--green); flex-shrink: 0; }
+
+    /* ═══════════ WHY RAJAM ═══════════ */
+    .why-wrap {
+      background:
+        radial-gradient(ellipse 70% 60% at 100% 50%, rgba(82,157,70,.13) 0%, transparent 55%),
+        radial-gradient(ellipse 50% 80% at -10% 80%, rgba(184,144,42,.09) 0%, transparent 50%),
+        #0c100e;
+      position: relative; overflow: hidden;
+    }
+    .why-wrap::before {
+      content: ''; position: absolute; top: -200px; right: -100px;
+      width: 600px; height: 600px; border-radius: 50%;
+      border: 1px solid rgba(82,157,70,.1); pointer-events: none;
+    }
+    .why-inner { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s8); align-items: center; }
+    .why-left .label { color: var(--green); }
+    .why-left .label::before { background: var(--green); }
+    .why-left h2 { color: #fff; margin-top: var(--s3); margin-bottom: var(--s3); }
+    .why-left p { color: rgba(255,255,255,.5); font-weight: 300; max-width: 420px; }
+    .why-logo-row {
+      display: flex; align-items: center; gap: var(--s3);
+      margin-top: var(--s5); padding-top: var(--s5);
+      border-top: 1px solid rgba(255,255,255,.08);
+    }
+    .why-logo-row img { height: 36px; width: auto; object-fit: contain; filter: brightness(0) invert(1); opacity: .7; }
+    .why-logo-row p { font-size: var(--t-xs); color: rgba(255,255,255,.3); }
+    .why-pillars { display: flex; flex-direction: column; }
+    .pillar {
+      display: flex; gap: var(--s3); align-items: flex-start;
+      padding: var(--s4) 0; border-bottom: 1px solid rgba(255,255,255,.07);
+    }
+    .pillar:last-child { border-bottom: none; padding-bottom: 0; }
+    .pillar-num {
+      font-family: 'Cormorant Garamond', serif; font-size: 44px; font-weight: 400;
+      line-height: 1; color: rgba(82,157,70,.25); flex-shrink: 0; width: 44px;
+    }
+    .pillar h4 { color: #fff; margin-bottom: 6px; }
+    .pillar p { font-size: var(--t-sm); color: rgba(255,255,255,.4); font-weight: 300; line-height: 1.65; }
+
+    /* ═══════════ CTA ═══════════ */
+    .cta-wrap {
+      background: var(--green-lt);
+      border-top: 1px solid var(--green-mid); border-bottom: 1px solid var(--green-mid);
+    }
+    .cta-inner { display: grid; grid-template-columns: 1fr 460px; gap: var(--s7); align-items: center; }
+    .cta-left h2 { margin-bottom: var(--s3); }
+    .cta-left p { max-width: 460px; }
+    .cta-right {
+      background: #fff; border: 1px solid var(--border);
+      border-radius: var(--radius); padding: var(--s5);
+    }
+    .cta-right .form-title { font-size: 20px; margin-bottom: var(--s3); }
+
+    /* ═══════════ FOOTER ═══════════ */
+    footer { background: var(--black); padding: var(--s7) 0 var(--s4); }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: var(--s6); margin-bottom: var(--s6); }
+    .footer-brand img { height: 40px; width: auto; object-fit: contain; margin-bottom: var(--s3); }
+    .footer-brand p { font-size: var(--t-sm); color: rgba(255,255,255,.35); font-weight: 300; line-height: 1.7; max-width: 260px; }
+    .footer-col h5 {
+      font-size: 10px; font-weight: 700; letter-spacing: .16em;
+      text-transform: uppercase; color: var(--green); margin-bottom: var(--s3);
+    }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-col li a { font-size: var(--t-sm); color: rgba(255,255,255,.35); font-weight: 300; transition: color .15s; }
+    .footer-col li a:hover { color: rgba(255,255,255,.8); }
+    .footer-bottom {
+      padding-top: var(--s3); border-top: 1px solid rgba(255,255,255,.07);
+      display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: var(--s2);
+    }
+    .footer-bottom p { font-size: var(--t-xs); color: rgba(255,255,255,.2); font-weight: 300; }
+    .disclaimer { background: #0d0d0d; padding: var(--s4) 0; }
+    .disclaimer p { font-size: 11px; color: rgba(255,255,255,.18); line-height: 1.8; font-weight: 300; }
+
+    /* ═══════════ RESPONSIVE ═══════════ */
+    @media (max-width: 1100px) {
+      :root { --gutter: 40px; }
+      .hero { grid-template-columns: 1fr; min-height: auto; }
+      .hero-left { padding: var(--s7) var(--gutter); }
+      .hero-right { border-left: none; border-top: 1px solid var(--border); padding: var(--s5) var(--gutter); }
+      .overview-grid { grid-template-columns: 1fr; gap: var(--s5); }
+      .overview-img-wrap img { height: 340px; }
+      .amenities-top { grid-template-columns: 1fr; gap: var(--s3); }
+      .panel { grid-template-columns: 1fr; }
+      .panel-img { height: 260px; }
+      .panel-body { padding: var(--s4); }
+      .districts-grid { grid-template-columns: 1fr 1fr; }
+      .district:nth-child(2) { border-right: none; }
+      .district:nth-child(3) { border-top: 1px solid var(--border); }
+      .location-grid { grid-template-columns: 1fr; }
+      .why-inner { grid-template-columns: 1fr; gap: var(--s6); }
+      .cta-inner { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: var(--s4); }
+      .nav-links { display: none; }
+      .nav-menu-btn { display: flex; }
+    }
+    @media (max-width: 640px) {
+      :root { --gutter: 20px; --s9: 72px; --s7: 48px; }
+      .hero-left { padding: var(--s6) var(--gutter); }
+      .hero-right { padding: var(--s4) var(--gutter); }
+      .hero-stats { gap: var(--s3); flex-wrap: wrap; }
+      .hero-chips { display: none; }
+      .districts-grid { grid-template-columns: 1fr; }
+      .district { border-right: none !important; border-top: 1px solid var(--border); }
+      .district:first-child { border-top: none; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .cta-right { padding: var(--s4); }
+      .tab-btn { padding: 12px 16px; font-size: 10px; }
+      .why-logo-row { flex-direction: column; align-items: flex-start; }
+      .footer-bottom { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="container nav-inner">
+    <a class="nav-brand" href="https://bangalore.rajamproperty.com">
+      <img src="images/logo_light.jpg" alt="Rajam Property">
+      <div class="nav-sep"></div>
+      <div class="nav-tag">Marketing Partner</div>
+    </a>
+    <div class="nav-links">
+      <a href="#overview">Overview</a>
+      <a href="#amenities">Amenities</a>
+      <a href="#plots">Plots</a>
+      <a href="#location">Location</a>
+      <a href="#why">About Us</a>
+      <a href="#cta" class="btn btn-green" style="padding:10px 20px;">Enquire Now</a>
+    </div>
+    <button class="nav-menu-btn" id="menu-btn" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="nav-drawer" id="nav-drawer">
+  <a href="#overview" onclick="closeMenu()">Overview</a>
+  <a href="#amenities" onclick="closeMenu()">Amenities</a>
+  <a href="#plots" onclick="closeMenu()">Plots</a>
+  <a href="#location" onclick="closeMenu()">Location</a>
+  <a href="#why" onclick="closeMenu()">About Us</a>
+  <a href="#cta" class="btn btn-green" onclick="closeMenu()">Enquire Now</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-label">Rajam Property Presents · Nelamangala, Bangalore</div>
+    <h1 class="hero-headline">Book Your Dream<br>Plot at <em>Vivo City</em></h1>
+    <p class="hero-sub">An exclusive chance to own your dream home at the heart of Nelamangala, Bangalore — a first-of-its-kind Italian-inspired plotted township.</p>
+    <div class="hero-chips">
+      <div class="chip">BMRDA Approved</div>
+      <div class="chip">RERA Registered</div>
+      <div class="chip">120+ Acres</div>
+      <div class="chip">Plotted Township</div>
+    </div>
+    <div class="hero-stats">
+      <div class="h-stat">
+        <div class="h-stat-n">120<sup>+</sup></div>
+        <div class="h-stat-l">Acres</div>
+      </div>
+      <div class="h-stat">
+        <div class="h-stat-n">2000<sup>+</sup></div>
+        <div class="h-stat-l">Plots</div>
+      </div>
+      <div class="h-stat">
+        <div class="h-stat-n">100<sup>+</sup></div>
+        <div class="h-stat-l">Amenities</div>
+      </div>
+      <div class="h-stat">
+        <div class="h-stat-n">50K</div>
+        <div class="h-stat-l">sqft Club</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="form-eyebrow">Register Your Interest</div>
+    <div class="form-title">Get Exclusive Project Details</div>
+    <div class="form-sub">Speak with our consultant and receive the full brochure — no obligation.</div>
+    <form onsubmit="return false;">
+      <div class="fg">
+        <label>Full Name</label>
+        <input type="text" placeholder="Your full name">
+      </div>
+      <div class="fg">
+        <label>Email Address</label>
+        <input type="email" placeholder="you@email.com">
+      </div>
+      <div class="fg">
+        <label>Phone Number</label>
+        <input type="tel" placeholder="+91 98765 43210">
+      </div>
+      <div class="fg">
+        <label>Preferred Plot Size</label>
+        <select>
+          <option value="">Select a size</option>
+          <option>1,200 sq.ft</option>
+          <option>1,350 sq.ft</option>
+          <option>1,500 sq.ft</option>
+          <option>1,650 sq.ft</option>
+          <option>1,800 sq.ft</option>
+        </select>
+      </div>
+      <button class="form-submit" type="submit">Request a Callback →</button>
+      <p class="form-note">Your details are private &amp; secure. No spam, ever.</p>
+      <p class="form-rera">RERA Reg. No: PRM/KA/RERA/1251/310/PR/190103/002177</p>
+    </form>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-strip">
+  <div class="marquee-track">
+    <div class="mq-item"><div class="mq-dot"></div>La Dolce Vita — By Design</div>
+    <div class="mq-item"><div class="mq-dot"></div>BMRDA Approved</div>
+    <div class="mq-item"><div class="mq-dot"></div>RERA Registered</div>
+    <div class="mq-item"><div class="mq-dot"></div>120+ Acres</div>
+    <div class="mq-item"><div class="mq-dot"></div>Casa Vivo · 50,000 sq.ft Clubhouse</div>
+    <div class="mq-item"><div class="mq-dot"></div>Vastu-Compliant Plots</div>
+    <div class="mq-item"><div class="mq-dot"></div>250m off NH-48</div>
+    <div class="mq-item"><div class="mq-dot"></div>Rajam Property · Since 1995</div>
+    <div class="mq-item"><div class="mq-dot"></div>La Dolce Vita — By Design</div>
+    <div class="mq-item"><div class="mq-dot"></div>BMRDA Approved</div>
+    <div class="mq-item"><div class="mq-dot"></div>RERA Registered</div>
+    <div class="mq-item"><div class="mq-dot"></div>120+ Acres</div>
+    <div class="mq-item"><div class="mq-dot"></div>Casa Vivo · 50,000 sq.ft Clubhouse</div>
+    <div class="mq-item"><div class="mq-dot"></div>Vastu-Compliant Plots</div>
+    <div class="mq-item"><div class="mq-dot"></div>250m off NH-48</div>
+    <div class="mq-item"><div class="mq-dot"></div>Rajam Property · Since 1995</div>
+  </div>
+</div>
+
+<!-- IMAGE PANELS -->
+<div class="img-panel">
+  <img src="images/hero_dolce_vita.png" alt="La Dolce Vita — By Design, Vivo City entrance">
+</div>
+<div class="img-panel">
+  <img src="images/hero_benvenuto.png" alt="Benvenuto to the Fine Life — Vivo City">
+</div>
+
+<!-- OVERVIEW -->
+<section class="section" id="overview">
+  <div class="container">
+    <div class="overview-grid">
+      <div class="overview-img-wrap reveal">
+        <img src="images/overview_gate.png" alt="Vivo City Gate — Nelamangala, Bangalore">
+        <div class="overview-img-tag">Nelamangala · North Bangalore</div>
+      </div>
+      <div class="overview-text">
+        <div class="label reveal">Project Overview</div>
+        <h2 class="reveal">A Township Designed for <em style="font-style:italic;color:var(--gold)">la bella vita</em></h2>
+        <div class="divider reveal"></div>
+        <p class="body-lg reveal">Here, luxury is not just a design choice. It is a way of life shaped by open spaces, elegant architecture, and thoughtful planning. Vivo City is a first-of-its-kind Italian-themed plotted development spread across 120+ acres in Nelamangala, Bangalore.</p>
+        <p class="body reveal">Curated for those who seek space, serenity, and a legacy lifestyle — just 30 minutes from the city's heartbeat, 250 metres off NH-48.</p>
+        <div class="stats-grid reveal">
+          <div class="stat-cell">
+            <div class="stat-cell-n">120<sup>+</sup></div>
+            <div class="stat-cell-l">Acres</div>
+          </div>
+          <div class="stat-cell">
+            <div class="stat-cell-n">2000<sup>+</sup></div>
+            <div class="stat-cell-l">Plots</div>
+          </div>
+          <div class="stat-cell">
+            <div class="stat-cell-n">50K</div>
+            <div class="stat-cell-l">sqft Clubhouse</div>
+          </div>
+          <div class="stat-cell">
+            <div class="stat-cell-n">100<sup>+</sup></div>
+            <div class="stat-cell-l">Amenities</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AMENITIES -->
+<section class="section amenities-wrap" id="amenities">
+  <div class="container">
+    <div class="amenities-top">
+      <div>
+        <div class="label reveal">Casa Vivo · 50,000 sq.ft Clubhouse</div>
+        <h2 class="reveal" style="margin-top:var(--s2)">100+ Amenities for Every Lifestyle</h2>
+        <p class="body reveal" style="margin-top:var(--s2);max-width:520px">A world-class clubhouse and open amenity landscape — designed to nourish body, mind and community every single day.</p>
+      </div>
+      <div class="tab-nav reveal">
+        <button class="tab-nav-btn" id="prev-btn">←</button>
+        <button class="tab-nav-btn" id="next-btn">→</button>
+      </div>
+    </div>
+    <div class="tabs-row reveal">
+      <button class="tab-btn active" data-tab="0">Clubhouse</button>
+      <button class="tab-btn" data-tab="1">Aquatics</button>
+      <button class="tab-btn" data-tab="2">Wellness</button>
+      <button class="tab-btn" data-tab="3">Sports</button>
+      <button class="tab-btn" data-tab="4">Gardens</button>
+      <button class="tab-btn" data-tab="5">Dining</button>
+    </div>
+    <div class="panels-wrap">
+      <div class="panel active">
+        <div class="panel-img"><img src="images/amenity_clubhouse.jpeg" alt="Casa Vivo Clubhouse"></div>
+        <div class="panel-body">
+          <div class="label">Casa Vivo</div>
+          <h3>The Clubhouse</h3>
+          <p class="body">Casa Vivo is the social and cultural soul of Vivo City — a 50,000 sq.ft masterpiece of Italian-inspired architecture housing every amenity the discerning resident could desire.</p>
+          <div class="panel-feats">
+            <div class="panel-feat">Grand Banquet Hall — 500+ capacity</div>
+            <div class="panel-feat">Multi-purpose Event Spaces</div>
+            <div class="panel-feat">Co-working &amp; Business Lounge</div>
+            <div class="panel-feat">Library &amp; Reading Terraces</div>
+          </div>
+        </div>
+      </div>
+      <div class="panel">
+        <div class="panel-img"><img src="images/amenity_pool.jpeg" alt="Resort Pool"></div>
+        <div class="panel-body">
+          <div class="label">Aquatics</div>
+          <h3>The Pool</h3>
+          <p class="body">A resort-style aquatics experience — from the Olympic-length lap pool to the leisure lagoon and children's splash zone, with lounge decks and cabanas.</p>
+          <div class="panel-feats">
+            <div class="panel-feat">Olympic-length Lap Pool</div>
+            <div class="panel-feat">Leisure Lagoon Pool</div>
+            <div class="panel-feat">Children's Splash Zone</div>
+            <div class="panel-feat">Poolside Cabanas &amp; Lounge</div>
+          </div>
+        </div>
+      </div>
+      <div class="panel">
+        <div class="panel-img"><img src="images/amenity_wellness.jpeg" alt="Wellness Spa"></div>
+        <div class="panel-body">
+          <div class="label">Wellness &amp; Spa</div>
+          <h3>Sanctuary of Serenity</h3>
+          <p class="body">A dedicated wellness sanctuary featuring a full-service spa, steam and sauna rooms, yoga pavilion, and a serene meditation garden — designed to restore balance daily.</p>
+          <div class="panel-feats">
+            <div class="panel-feat">Full-service Day Spa</div>
+            <div class="panel-feat">Steam, Sauna &amp; Jacuzzi</div>
+            <div class="panel-feat">Yoga &amp; Pilates Pavilion</div>
+            <div class="panel-feat">Meditation Garden</div>
+          </div>
+        </div>
+      </div>
+      <div class="panel">
+        <div class="panel-img"><img src="images/amenity_sports.jpeg" alt="Tennis Courts"></div>
+        <div class="panel-body">
+          <div class="label">Sports</div>
+          <h3>Championship Facilities</h3>
+          <p class="body">World-class sports infrastructure — from professional-grade tennis and squash courts to a fully-equipped gymnasium and multipurpose sports hall.</p>
+          <div class="panel-feats">
+            <div class="panel-feat">Floodlit Tennis Courts</div>
+            <div class="panel-feat">Squash &amp; Badminton Courts</div>
+            <div class="panel-feat">Basketball &amp; Football</div>
+            <div class="panel-feat">Fully-equipped Fitness Centre</div>
+          </div>
+        </div>
+      </div>
+      <div class="panel">
+        <div class="panel-img"><img src="images/amenity_gardens.jpeg" alt="Gardens"></div>
+        <div class="panel-body">
+          <div class="label">Gardens &amp; Parks</div>
+          <h3>Living Amongst Nature</h3>
+          <p class="body">Over 40% of Vivo City is dedicated to open green spaces — theme gardens, tree-lined promenades, a 3km jogging trail, and a central piazza with a landmark fountain.</p>
+          <div class="panel-feats">
+            <div class="panel-feat">Central Piazza &amp; Fountain</div>
+            <div class="panel-feat">3km Jogging &amp; Cycling Trail</div>
+            <div class="panel-feat">Italian Themed Gardens</div>
+            <div class="panel-feat">Outdoor Amphitheatre</div>
+          </div>
+        </div>
+      </div>
+      <div class="panel">
+        <div class="panel-img"><img src="images/amenity_dining.jpeg" alt="Fine Dining"></div>
+        <div class="panel-body">
+          <div class="label">Dining</div>
+          <h3>Savour the Good Life</h3>
+          <p class="body">From a casual all-day café to an elegant multi-cuisine restaurant and a rooftop aperitivo bar — the Italian table, every day at Casa Vivo.</p>
+          <div class="panel-feats">
+            <div class="panel-feat">Multi-cuisine Restaurant</div>
+            <div class="panel-feat">Rooftop Aperitivo Lounge</div>
+            <div class="panel-feat">All-day Café &amp; Patisserie</div>
+            <div class="panel-feat">Private Dining Rooms</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PLOT DISTRICTS -->
+<section class="section" id="plots">
+  <div class="container">
+    <div class="label reveal">Plot Districts</div>
+    <h2 class="reveal" style="margin-top:var(--s2)">Four Italian Districts.<br>One Grand Township.</h2>
+    <p class="body reveal" style="margin-top:var(--s2);max-width:560px">Each district is named after an iconic Italian city — with its own character and landscape, all sharing the same world-class infrastructure.</p>
+    <div class="site-map reveal">
+      <img src="images/plots_masterplan.png" alt="Vivo City Site Master Plan — Rome, Venice, Milan, Naples">
+    </div>
+    <div class="districts-grid reveal">
+      <div class="district">
+        <div class="district-dot" style="background:#e8924a;"></div>
+        <h3>Rome</h3>
+        <p>The heart of Vivo City. Wide avenues, fountain plazas, and the grandest entrance boulevard, inspired by the Eternal City's civic magnificence.</p>
+        <div class="district-phase">Phase 1</div>
+      </div>
+      <div class="district">
+        <div class="district-dot" style="background:#4ab8b0;"></div>
+        <h3>Venice</h3>
+        <p>Serene waterfront-inspired lanes, arched walkways, and lush green corridors that evoke the calm of La Serenissima.</p>
+        <div class="district-phase">Phase 1</div>
+      </div>
+      <div class="district">
+        <div class="district-dot" style="background:#e066a0;"></div>
+        <h3>Milan</h3>
+        <p>Contemporary elegance meets Italian craftsmanship. Designed for those who appreciate refined modernity and clean lines.</p>
+        <div class="district-phase">Phase 1</div>
+      </div>
+      <div class="district">
+        <div class="district-dot" style="background:#9966b8;"></div>
+        <h3>Naples</h3>
+        <p>Sun-drenched and vibrant, Naples offers the finest plots with views of the central landscape gardens.</p>
+        <div class="district-phase">Phase 2</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LOCATION -->
+<section class="section location-wrap" id="location">
+  <div class="container">
+    <div class="label reveal">Strategic Location</div>
+    <h2 class="reveal" style="margin-top:var(--s2)">Connected to Everything That Matters</h2>
+    <div class="location-grid">
+      <div class="reveal">
+        <div class="map-box">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15538!2d77.380!3d13.126!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae232fe5b46c1f%3A0x74b49c31dc79c2e3!2sNelamangala%2C%20Karnataka!5e0!3m2!1sen!2sin!4v1680000000000" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          <div class="map-note">
+            <p><strong>250 metres off NH-48</strong> — Thalekere Village, Nelamangala. The upcoming Mumbai–Bangalore Expressway corridor will further enhance connectivity.</p>
+          </div>
+        </div>
+      </div>
+      <div class="dist-list reveal">
+        <div class="dist-row">
+          <div class="dist-icon">✈️</div>
+          <div class="dist-info"><h4>Kempegowda International Airport</h4><p>Via NH-44 / Bellary Road</p></div>
+          <div class="dist-time">~35 min</div>
+        </div>
+        <div class="dist-row">
+          <div class="dist-icon">🏢</div>
+          <div class="dist-info"><h4>Manyata Tech Park</h4><p>North Bangalore IT Corridor</p></div>
+          <div class="dist-time">~25 min</div>
+        </div>
+        <div class="dist-row">
+          <div class="dist-icon">🏙️</div>
+          <div class="dist-info"><h4>Hebbal / Outer Ring Road</h4><p>City connectivity node</p></div>
+          <div class="dist-time">~30 min</div>
+        </div>
+        <div class="dist-row">
+          <div class="dist-icon">🛣️</div>
+          <div class="dist-info"><h4>Mumbai–Bangalore Expressway</h4><p>Upcoming NH-48 corridor</p></div>
+          <div class="dist-time">Doorstep</div>
+        </div>
+        <div class="dist-row">
+          <div class="dist-icon">🏫</div>
+          <div class="dist-info"><h4>Schools, Hospitals &amp; Retail</h4><p>Nelamangala town centre</p></div>
+          <div class="dist-time">~5 min</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY RAJAM -->
+<section class="section why-wrap" id="why">
+  <div class="container">
+    <div class="why-inner">
+      <div class="why-left">
+        <div class="label reveal">Your Marketing Partner</div>
+        <h2 class="reveal">Why Buy Through Rajam Property?</h2>
+        <p class="body reveal" style="color:rgba(255,255,255,.5);font-weight:300;margin-top:var(--s3)">Since 1995, Rajam Property has been South India's most trusted real estate advisory — guiding families to properties that endure as legacy investments.</p>
+        <div class="why-logo-row reveal">
+          <img src="images/logo_light.jpg" alt="Rajam Property">
+          <p>Authorised Marketing Partner · Vivo City</p>
+        </div>
+      </div>
+      <div class="why-pillars">
+        <div class="pillar reveal">
+          <div class="pillar-num">01</div>
+          <div><h4>30 Years of Expertise</h4><p>Three decades of guiding discerning buyers across South India's finest residential and commercial developments.</p></div>
+        </div>
+        <div class="pillar reveal">
+          <div class="pillar-num">02</div>
+          <div><h4>End-to-End Assistance</h4><p>From your first site visit through legal due diligence, home loan facilitation, and registration — we handle every step.</p></div>
+        </div>
+        <div class="pillar reveal">
+          <div class="pillar-num">03</div>
+          <div><h4>Complete Transparency</h4><p>No hidden costs. Every detail — documents, timelines — laid out clearly from day one.</p></div>
+        </div>
+        <div class="pillar reveal">
+          <div class="pillar-num">04</div>
+          <div><h4>Post-Purchase Support</h4><p>Our relationship continues well beyond registration — construction tie-ups, community integration, and resale advisory.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="section-sm cta-wrap" id="cta">
+  <div class="container">
+    <div class="cta-inner">
+      <div class="cta-left">
+        <div class="label reveal">Own a Piece of Vivo City</div>
+        <h2 class="reveal" style="margin-top:var(--s2)">Begin Your Journey to La Dolce Vita</h2>
+        <p class="body reveal" style="margin-top:var(--s2)">Schedule a complimentary site visit and experience Vivo City in person. Our consultant will walk you through the districts, master plan, and everything you need to make the right decision.</p>
+      </div>
+      <div class="cta-right reveal">
+        <div class="form-title">Schedule a Site Visit</div>
+        <div class="form-sub" style="margin-bottom:var(--s3)">A consultant will reach out within 24 hours.</div>
+        <form onsubmit="return false;">
+          <div class="fg"><label>Full Name</label><input type="text" placeholder="Your name"></div>
+          <div class="fg"><label>Phone Number</label><input type="tel" placeholder="+91 98765 43210"></div>
+          <div class="fg">
+            <label>Preferred Plot Size</label>
+            <select>
+              <option value="">Select a size</option>
+              <option>1,200 sq.ft</option>
+              <option>1,350 sq.ft</option>
+              <option>1,500 sq.ft</option>
+              <option>1,650 sq.ft</option>
+              <option>1,800 sq.ft</option>
+            </select>
+          </div>
+          <button class="form-submit" type="submit">Schedule Site Visit →</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="images/logo_dark.jpg" alt="Rajam Property">
+        <p>Rajam Property (Rapro) is a trusted real estate marketing consultancy established in 1995, connecting discerning buyers with premium residential and commercial properties across South India.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Vivo City</h5>
+        <ul>
+          <li><a href="#overview">Overview</a></li>
+          <li><a href="#amenities">Amenities</a></li>
+          <li><a href="#plots">Plot Districts</a></li>
+          <li><a href="#location">Location</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Rajam Property</h5>
+        <ul>
+          <li><a href="https://bangalore.rajamproperty.com">Home</a></li>
+          <li><a href="#">Our Projects</a></li>
+          <li><a href="#">Testimonials</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Contact</h5>
+        <ul>
+          <li><a href="tel:+917299914181">+91 72999 14181</a></li>
+          <li><a href="mailto:enquiry@rajamproperty.in">enquiry@rajamproperty.in</a></li>
+          <li><a href="#">Chennai Office</a></li>
+          <li><a href="#">Bangalore Office</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Rajam Property. All rights reserved. Authorised Marketing Partner for Vivo City.</p>
+      <p>RERA: PRM/KA/RERA/1251/310/PR/190103/002177</p>
+    </div>
+  </div>
+</footer>
+
+<div class="disclaimer">
+  <div class="container">
+    <p><strong>Disclaimer:</strong> This website is managed by Rajam Property, the authorised marketing partner for Vivo City. All project details, specifications, and imagery are indicative and subject to change without notice. Images are for representational purposes only and do not constitute an offer or contract. Please verify all details independently before making any investment decision.</p>
+  </div>
+</div>
+
+<script>
+  // Scroll reveal
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 70);
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+  // Amenity tabs
+  const tabBtns   = document.querySelectorAll('.tab-btn');
+  const tabPanels = document.querySelectorAll('.panel');
+  let cur = 0;
+  function goTab(n) {
+    tabBtns[cur].classList.remove('active');
+    tabPanels[cur].classList.remove('active');
+    cur = (n + tabBtns.length) % tabBtns.length;
+    tabBtns[cur].classList.add('active');
+    tabPanels[cur].classList.add('active');
+  }
+  tabBtns.forEach((btn, i) => btn.addEventListener('click', () => goTab(i)));
+  document.getElementById('next-btn').addEventListener('click', () => goTab(cur + 1));
+  document.getElementById('prev-btn').addEventListener('click', () => goTab(cur - 1));
+
+  // Mobile nav
+  const menuBtn = document.getElementById('menu-btn');
+  const drawer  = document.getElementById('nav-drawer');
+  menuBtn.addEventListener('click', () => drawer.classList.toggle('open'));
+  function closeMenu() { drawer.classList.remove('open'); }
+</script>
+</body>
+</html>
