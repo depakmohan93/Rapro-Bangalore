@@ -553,22 +553,22 @@
     <div class="form-eyebrow">Register Your Interest</div>
     <div class="form-title">Get Exclusive Project Details</div>
     <div class="form-sub">Speak with our consultant and receive the full brochure — no obligation.</div>
-    <form onsubmit="return false;">
+    <form id="hero-form" onsubmit="submitForm(event,'hero-form','Hero Enquiry')">
       <div class="fg">
         <label>Full Name</label>
-        <input type="text" placeholder="Your full name">
+        <input id="h-name" type="text" placeholder="Your full name" required>
       </div>
       <div class="fg">
         <label>Email Address</label>
-        <input type="email" placeholder="you@email.com">
+        <input id="h-email" type="email" placeholder="you@email.com">
       </div>
       <div class="fg">
         <label>Phone Number</label>
-        <input type="tel" placeholder="+91 98765 43210">
+        <input id="h-phone" type="tel" placeholder="+91 98765 43210" required>
       </div>
       <div class="fg">
         <label>Preferred Plot Size</label>
-        <select>
+        <select id="h-size">
           <option value="">Select a size</option>
           <option>1,200 sq.ft</option>
           <option>1,350 sq.ft</option>
@@ -577,7 +577,7 @@
           <option>1,800 sq.ft</option>
         </select>
       </div>
-      <button class="form-submit" type="submit">Request a Callback →</button>
+      <button class="form-submit" id="h-btn" type="submit">Request a Callback →</button>
       <p class="form-note">Your details are private &amp; secure. No spam, ever.</p>
       <p class="form-rera">RERA Reg. No: PRM/KA/RERA/1251/310/PR/190103/002177</p>
     </form>
@@ -854,7 +854,7 @@
         <h2 class="reveal">Why Buy Through Rajam Property?</h2>
         <p class="body reveal" style="color:rgba(255,255,255,.5);font-weight:300;margin-top:var(--s3)">Since 1995, Rajam Property has been South India's most trusted real estate advisory — guiding families to properties that endure as legacy investments.</p>
         <div class="why-logo-row reveal">
-          <img src="/buy-plot/images/logo_light.jpg" alt="Rajam Property">
+          <img src="/buy-plot/images/logo_light.jpg" alt="Rajam Property" style="height:48px;width:auto;object-fit:contain;filter:none;opacity:1;background:transparent;">
           <p>Authorised Marketing Partner · Vivo City</p>
         </div>
       </div>
@@ -892,12 +892,12 @@
       <div class="cta-right reveal">
         <div class="form-title">Schedule a Site Visit</div>
         <div class="form-sub" style="margin-bottom:var(--s3)">A consultant will reach out within 24 hours.</div>
-        <form onsubmit="return false;">
-          <div class="fg"><label>Full Name</label><input type="text" placeholder="Your name"></div>
-          <div class="fg"><label>Phone Number</label><input type="tel" placeholder="+91 98765 43210"></div>
+        <form id="cta-form" onsubmit="submitForm(event,'cta-form','Site Visit Request')">
+          <div class="fg"><label>Full Name</label><input id="c-name" type="text" placeholder="Your name" required></div>
+          <div class="fg"><label>Phone Number</label><input id="c-phone" type="tel" placeholder="+91 98765 43210" required></div>
           <div class="fg">
             <label>Preferred Plot Size</label>
-            <select>
+            <select id="c-size">
               <option value="">Select a size</option>
               <option>1,200 sq.ft</option>
               <option>1,350 sq.ft</option>
@@ -906,7 +906,7 @@
               <option>1,800 sq.ft</option>
             </select>
           </div>
-          <button class="form-submit" type="submit">Schedule Site Visit →</button>
+          <button class="form-submit" id="c-btn" type="submit">Schedule Site Visit →</button>
         </form>
       </div>
     </div>
@@ -963,7 +963,49 @@
 </div>
 
 <script>
-  // Scroll reveal
+  // ── Google Sheets endpoint (Apps Script Web App URL) ──
+  const SHEET_URL = 'https://script.google.com/macros/s/AKfycbzKWkWqJAoVcLF3z-PL_fczqlkHQJeBYJ3G2bx0xtBx_1aGPnpFIp9zVCJ_1G7oKA/exec';
+
+  // ── Form submission ──
+  function submitForm(e, formId, formType) {
+    e.preventDefault();
+    const isHero = formId === 'hero-form';
+    const btn    = document.getElementById(isHero ? 'h-btn' : 'c-btn');
+    const orig   = btn.textContent;
+
+    const payload = isHero ? {
+      formType,
+      name:     document.getElementById('h-name').value.trim(),
+      email:    document.getElementById('h-email').value.trim(),
+      phone:    document.getElementById('h-phone').value.trim(),
+      plotSize: document.getElementById('h-size').value
+    } : {
+      formType,
+      name:     document.getElementById('c-name').value.trim(),
+      email:    '',
+      phone:    document.getElementById('c-phone').value.trim(),
+      plotSize: document.getElementById('c-size').value
+    };
+
+    btn.textContent = 'Sending…';
+    btn.disabled = true;
+
+    fetch(SHEET_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    }).then(() => {
+      btn.textContent = '✓ We\'ll be in touch soon!';
+      document.getElementById(formId).reset();
+    }).catch(() => {
+      btn.textContent = orig;
+      btn.disabled = false;
+      alert('Something went wrong. Please call us directly at +91 72999 14181.');
+    });
+  }
+
+  // ── Scroll reveal ──
   const obs = new IntersectionObserver((entries) => {
     entries.forEach((e, i) => {
       if (e.isIntersecting) {
@@ -974,7 +1016,7 @@
   }, { threshold: 0.1 });
   document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 
-  // Amenity tabs
+  // ── Amenity tabs ──
   const tabBtns   = document.querySelectorAll('.tab-btn');
   const tabPanels = document.querySelectorAll('.panel');
   let cur = 0;
@@ -989,7 +1031,7 @@
   document.getElementById('next-btn').addEventListener('click', () => goTab(cur + 1));
   document.getElementById('prev-btn').addEventListener('click', () => goTab(cur - 1));
 
-  // Mobile nav
+  // ── Mobile nav ──
   const menuBtn = document.getElementById('menu-btn');
   const drawer  = document.getElementById('nav-drawer');
   menuBtn.addEventListener('click', () => drawer.classList.toggle('open'));
