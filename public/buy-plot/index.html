@@ -964,7 +964,6 @@
 
 <script>
   // ── Google Sheets endpoint (Apps Script Web App URL) ──
-  const SHEET_URL = 'https://script.google.com/macros/s/AKfycbyiaWnRuQJxsLCehMjBbRRKDEr5U6WTp18osep15bK_SganLlmBzxA_raT5KBmB4HN2Dw/exec';
 
   // ── Form submission ──
   function submitForm(e, formId, formType) {
@@ -973,30 +972,34 @@
     const btn    = document.getElementById(isHero ? 'h-btn' : 'c-btn');
     const orig   = btn.textContent;
 
+    const timestamp = new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' });
     const payload = isHero ? {
-      formType,
-      name:     document.getElementById('h-name').value.trim(),
-      email:    document.getElementById('h-email').value.trim(),
-      phone:    document.getElementById('h-phone').value.trim(),
-      plotSize: document.getElementById('h-size').value
+      timestamp,
+      name:         document.getElementById('h-name').value.trim(),
+      email:        document.getElementById('h-email').value.trim(),
+      phone:        document.getElementById('h-phone').value.trim(),
+      propertyType: document.getElementById('h-size').value,
+      location:     'Vivo City',
+      message:      formType
     } : {
-      formType,
-      name:     document.getElementById('c-name').value.trim(),
-      email:    '',
-      phone:    document.getElementById('c-phone').value.trim(),
-      plotSize: document.getElementById('c-size').value
+      timestamp,
+      name:         document.getElementById('c-name').value.trim(),
+      email:        '',
+      phone:        document.getElementById('c-phone').value.trim(),
+      propertyType: document.getElementById('c-size').value,
+      location:     'Vivo City',
+      message:      formType
     };
 
     btn.textContent = 'Sending…';
     btn.disabled = true;
 
-    fetch(SHEET_URL, {
+    fetch('/api/submit-lead', {
       method: 'POST',
-      mode: 'no-cors',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload)
     }).then(() => {
-      btn.textContent = '✓ We\'ll be in touch soon!';
+      btn.textContent = '\u2713 We\'ll be in touch soon!';
       document.getElementById(formId).reset();
     }).catch(() => {
       btn.textContent = orig;
