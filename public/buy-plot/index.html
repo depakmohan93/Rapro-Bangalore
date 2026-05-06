@@ -963,8 +963,6 @@
 </div>
 
 <script>
-  // ── Google Sheets endpoint (Apps Script Web App URL) ──
-
   // ── Form submission ──
   function submitForm(e, formId, formType) {
     e.preventDefault();
@@ -973,22 +971,23 @@
     const orig   = btn.textContent;
 
     const timestamp = new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' });
+
     const payload = isHero ? {
       timestamp,
-      name:         document.getElementById('h-name').value.trim(),
-      email:        document.getElementById('h-email').value.trim(),
-      phone:        document.getElementById('h-phone').value.trim(),
-      propertyType: document.getElementById('h-size').value,
-      location:     'Vivo City',
-      message:      formType
+      name:     document.getElementById('h-name').value.trim(),
+      email:    document.getElementById('h-email').value.trim(),
+      phone:    document.getElementById('h-phone').value.trim(),
+      plotSize: document.getElementById('h-size').value,
+      location: 'Vivo City',
+      message:  formType,
     } : {
       timestamp,
-      name:         document.getElementById('c-name').value.trim(),
-      email:        '',
-      phone:        document.getElementById('c-phone').value.trim(),
-      propertyType: document.getElementById('c-size').value,
-      location:     'Vivo City',
-      message:      formType
+      name:     document.getElementById('c-name').value.trim(),
+      email:    '',
+      phone:    document.getElementById('c-phone').value.trim(),
+      plotSize: document.getElementById('c-size').value,
+      location: 'Vivo City',
+      message:  formType,
     };
 
     btn.textContent = 'Sending…';
@@ -999,12 +998,9 @@
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload)
     }).then(() => {
-      btn.textContent = '\u2713 We\'ll be in touch soon!';
-      document.getElementById(formId).reset();
+      window.location.href = '/thank-you';
     }).catch(() => {
-      btn.textContent = orig;
-      btn.disabled = false;
-      alert('Something went wrong. Please call us directly at +91 72999 14181.');
+      window.location.href = '/thank-you';
     });
   }
 
