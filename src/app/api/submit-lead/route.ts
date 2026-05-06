@@ -35,11 +35,6 @@ export async function POST(request: Request) {
     }
 
     // Step 2: Build the Zoho Bigin contact record
-    const nameParts = (name as string).trim().split(/\s+/)
-    const firstName = nameParts.length > 1 ? nameParts.slice(0, -1).join(' ') : ''
-    const lastName =
-      nameParts.length > 1 ? nameParts[nameParts.length - 1] : nameParts[0] || 'Unknown'
-
     const descriptionParts = [
       timestamp && `Submitted: ${timestamp}`,
       service && `Service: ${service}`,
@@ -51,11 +46,12 @@ export async function POST(request: Request) {
     const contactPayload = {
       data: [
         {
-          First_Name: firstName,
-          Last_Name: lastName,
-          Phone: phone,
+          Last_Name: (name as string).trim() || 'Unknown',
           Email: email,
+          Phone: phone,
           Description: descriptionParts.join('\n'),
+          Lead_Source: 'Website',
+          $properties_for_module: 'Contacts',
         },
       ],
     }
