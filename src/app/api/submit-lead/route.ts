@@ -42,20 +42,21 @@ export async function POST(request: Request) {
       location && `Location: ${location}`,
     ].filter(Boolean)
 
+    // Only include picklist fields when they have a value — Bigin rejects empty strings on picklists
+    const contactRecord: Record<string, unknown> = {
+      Last_Name: (name as string).trim() || 'Unknown',
+      Email: email,
+      Phone: phone,
+      Description: metaParts.join('\n'),
+      Lead_Source: 'Website',
+      $properties_for_module: 'Contacts',
+    }
+    if (service) contactRecord.Services_you_are_looking_for = service
+    if (message) contactRecord.Message = message
+    if (plotSize) contactRecord.Preferred_plot_size = plotSize
+
     const contactPayload = {
-      data: [
-        {
-          Last_Name: (name as string).trim() || 'Unknown',
-          Email: email,
-          Phone: phone,
-          Services_you_are_looking_for: service,
-          Message: message,
-          Preferred_plot_size: plotSize,
-          Description: metaParts.join('\n'),
-          Lead_Source: 'Website',
-          $properties_for_module: 'Contacts',
-        },
-      ],
+      data: [contactRecord],
     }
 
     // Step 3: POST the new contact to Zoho Bigin
