@@ -4,10 +4,6 @@ import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import gsap from 'gsap'
 
-// Google Apps Script Web App URL — replace this after deploying your script
-const APPS_SCRIPT_URL = process.env.NEXT_PUBLIC_APPS_SCRIPT_URL || ''
-
-
 function validateIndianPhone(phone: string): string | null {
   const cleaned = phone.replace(/\s+/g, '').replace(/-/g, '')
   const regex = /^(\+91|91|0)?[6-9]\d{9}$/
@@ -185,15 +181,13 @@ export default function Hero() {
         message: formData.message,
       }
       // Fire-and-forget — don't await, never block the redirect
-      if (APPS_SCRIPT_URL) {
-        const params = new URLSearchParams(payload)
-        fetch(`${APPS_SCRIPT_URL}?${params.toString()}`, {
-          method: 'GET',
-          mode: 'no-cors',
-        }).catch(() => {}) // silently ignore sheet errors
-      }
+      fetch('/api/submit-lead', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      }).catch(() => {}) // silently ignore errors
     } finally {
-      // Always redirect — sheet write must never block the user
+      // Always redirect — API call must never block the user
       router.push('/thank-you')
     }
   }
