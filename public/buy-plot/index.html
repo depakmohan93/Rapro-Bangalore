@@ -894,6 +894,7 @@
         <div class="form-sub" style="margin-bottom:var(--s3)">A consultant will reach out within 24 hours.</div>
         <form id="cta-form" onsubmit="submitForm(event,'cta-form','Site Visit Request')">
           <div class="fg"><label>Full Name</label><input id="c-name" type="text" placeholder="Your name" required></div>
+          <div class="fg"><label>Email Address</label><input id="c-email" type="email" placeholder="you@email.com"></div>
           <div class="fg"><label>Phone Number</label><input id="c-phone" type="tel" placeholder="+91 98765 43210" required></div>
           <div class="fg">
             <label>Preferred Plot Size</label>
@@ -983,7 +984,7 @@
     } : {
       timestamp,
       name:     document.getElementById('c-name').value.trim(),
-      email:    '',
+      email:    document.getElementById('c-email').value.trim(),
       phone:    document.getElementById('c-phone').value.trim(),
       plotSize: document.getElementById('c-size').value,
       location: 'Vivo City',
