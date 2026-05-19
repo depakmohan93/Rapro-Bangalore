@@ -44,7 +44,7 @@ export default function Navbar() {
 
           {/* Logo */}
           <div className="flex items-center">
-            <Image src="/Logo_light.svg" alt="Rapro Logo" width={100} height={45} priority />
+            <Image src="/Logo_light.png" alt="Rapro Logo" width={100} height={45} priority />
           </div>
 
           {/* Desktop Nav Links */}

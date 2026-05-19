@@ -9,7 +9,7 @@ export default function Footer() {
           {/* Brand */}
           <div className="md:col-span-2">
             <div className="mb-4">
-              <Image src="/Logo_dark.svg" alt="Rapro Logo" width={100} height={45} />
+              <Image src="/Logo_light.png" alt="Rapro Logo" width={100} height={45} />
             </div>
             <p className="font-poppins text-[#A0A0A0] max-w-xs mb-6" style={{ fontWeight: 400, fontSize: '0.875rem', lineHeight: '1.6' }}>
               Bangalore&apos;s award-winning property management service. Trusted by 1000+ NRIs for over 30 years.

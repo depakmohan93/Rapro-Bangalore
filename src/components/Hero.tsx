@@ -108,30 +108,27 @@ function StatStrip({ city }: { city: 'Chennai' | 'Bangalore' }) {
         <span style={{ fontFamily: 'Poppins, sans-serif', fontWeight: 400, fontSize: '11px', color: 'rgba(255,255,255,0.75)', lineHeight: 1.4 }}>Years Experience<br />&nbsp;</span>
       </div>
 
-      {/* Stat 4 — Since 1995 */}
+      {/* Stat 4 — Trusted by 1,000+ NRIs */}
       <div className="flex flex-col px-7 py-2 flex-1 min-w-[170px]">
         <div className="flex items-center" style={{ gap: '0.5rem', marginBottom: '6px' }}>
           <div style={{ width: '28px', height: '28px', background: '#73B130', borderRadius: '6px', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-              <rect x="3" y="4" width="18" height="18" rx="2" ry="2" stroke="#fff" strokeWidth="2" />
-              <line x1="16" y1="2" x2="16" y2="6" stroke="#fff" strokeWidth="2" strokeLinecap="round" />
-              <line x1="8" y1="2" x2="8" y2="6" stroke="#fff" strokeWidth="2" strokeLinecap="round" />
-              <line x1="3" y1="10" x2="21" y2="10" stroke="#fff" strokeWidth="2" />
-              <rect x="7" y="14" width="2" height="2" fill="#fff" />
-              <rect x="11" y="14" width="2" height="2" fill="#fff" />
-              <rect x="15" y="14" width="2" height="2" fill="#fff" />
+              <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+              <circle cx="9" cy="7" r="4" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+              <path d="M23 21v-2a4 4 0 00-3-3.87" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+              <path d="M16 3.13a4 4 0 010 7.75" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
           </div>
-          <span style={{ fontFamily: 'Quicksand, sans-serif', fontWeight: 700, fontSize: '20px', color: '#FFFFFF', lineHeight: 1.1, whiteSpace: 'nowrap' }}>Since 1995</span>
+          <span style={{ fontFamily: 'Quicksand, sans-serif', fontWeight: 700, fontSize: '20px', color: '#FFFFFF', lineHeight: 1.1, whiteSpace: 'nowrap' }}>1,000+</span>
         </div>
-        <span style={{ fontFamily: 'Poppins, sans-serif', fontWeight: 400, fontSize: '11px', color: 'rgba(255,255,255,0.75)', lineHeight: 1.4 }}>Serving {city}<br />&nbsp;</span>
+        <span style={{ fontFamily: 'Poppins, sans-serif', fontWeight: 400, fontSize: '11px', color: 'rgba(255,255,255,0.75)', lineHeight: 1.4 }}>Trusted by NRIs<br />&nbsp;</span>
       </div>
     </div>
   )
 }
 
 export default function Hero() {
-  const [formData, setFormData] = useState({ name: '', phone: '', email: '', service: '', message: '' })
+  const [formData, setFormData] = useState({ name: '', phone: '', email: '', propertyType: '', propertyLocation: '', propertyLocationOther: '' })
   const [errors, setErrors] = useState<Record<string, string>>({})
   const [submitting, setSubmitting] = useState(false)
   const router = useRouter()
@@ -161,7 +158,8 @@ export default function Hero() {
     if (nameErr) newErrors.name = nameErr
     if (phoneErr) newErrors.phone = phoneErr
     if (emailErr) newErrors.email = emailErr
-    if (!formData.service) newErrors.service = 'Please select a service'
+    if (!formData.propertyType) newErrors.propertyType = 'Please select a property type'
+    if (!formData.propertyLocation) newErrors.propertyLocation = 'Please select a location'
     setErrors(newErrors)
     return Object.keys(newErrors).length === 0
   }
@@ -177,8 +175,8 @@ export default function Hero() {
         name: formData.name,
         phone: formData.phone,
         email: formData.email,
-        service: formData.service,
-        message: formData.message,
+        propertyType: formData.propertyType,
+        propertyLocation: formData.propertyLocation === 'Other' ? formData.propertyLocationOther : formData.propertyLocation,
       }
       // Fire-and-forget — don't await, never block the redirect
       fetch('/api/submit-lead', {
@@ -197,9 +195,12 @@ export default function Hero() {
 
   return (
     <section id="consultation" className="relative min-h-screen pt-[76px] overflow-hidden">
-      <video className="absolute inset-0 w-full h-full object-cover" autoPlay muted loop playsInline preload="auto">
+      {/* Desktop: video background */}
+      <video className="hidden md:block absolute inset-0 w-full h-full object-cover" autoPlay muted loop playsInline preload="auto">
         <source src="/hero_bg.mp4" type="video/mp4" />
       </video>
+      {/* Mobile: static image background */}
+      <div className="md:hidden absolute inset-0 w-full h-full" style={{ backgroundImage: 'url(/hero_bg_mobile.jpeg)', backgroundSize: 'cover', backgroundPosition: 'center' }} />
       <div className="absolute inset-0" style={{ background: 'rgba(0,0,0,0.5)' }} />
 
       <div className="relative z-10 max-w-[1440px] mx-auto px-5 md:px-20 pt-16 pb-16 md:pt-[99px] md:pb-[99px]">
@@ -207,21 +208,18 @@ export default function Hero() {
 
           {/* ── Left column ─────────────────────────────────────────── */}
           <div className="flex-1 lg:max-w-[727px]">
-            {/* #1 badge */}
-            <div ref={badgeRef} className="relative mb-10" style={{ width: '320px', height: '71px' }}>
-              <div className="absolute inset-0" style={{ background: 'rgba(255,255,255,0.15)', boxShadow: '0px 4px 4px rgba(0,0,0,0.2)', borderRadius: '8px' }} />
-              <div className="absolute" style={{ width: '92.21px', height: '69.17px', left: '227.79px', top: '-33.54px', background: '#293E4F', borderRadius: '16px 16px 0px 18px' }} />
-              <div className="absolute" style={{ width: '85.67px', height: '62.04px', left: '234.33px', top: '-33.54px', background: '#81D922', borderRadius: '16px 16px 0px 16px' }} />
-              <span className="absolute flex items-center" style={{ width: '58px', height: '35px', left: '248.17px', top: 'calc(50% - 35px/2 - 36.2px)', fontFamily: 'Inter, sans-serif', fontStyle: 'italic', fontWeight: 700, fontSize: '50.2955px', lineHeight: '34px', color: '#FFFFFF' }}>#1</span>
-              <div className="absolute flex flex-col justify-center" style={{ left: '16px', top: '0', bottom: '0', width: '210px' }}>
-                <span style={{ fontFamily: 'Inter, sans-serif', fontWeight: 600, fontSize: '24px', lineHeight: '26px', letterSpacing: '0.35px', textTransform: 'uppercase', color: '#FFFFFF', whiteSpace: 'nowrap' }}>BANGALORE&apos;S</span>
-                <span style={{ fontFamily: 'Inter, sans-serif', fontWeight: 400, fontSize: '14px', lineHeight: '18px', color: '#FFFFFF', whiteSpace: 'nowrap' }}>Property Management Service</span>
-              </div>
+            {/* Rajam Property Management pill badge */}
+            <div ref={badgeRef} className="inline-flex items-center gap-3 mb-10" style={{ background: '#0D3D1A', border: '2px solid #9AC136', borderRadius: '50px', padding: '10px 24px 10px 16px' }}>
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+                <path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H4a1 1 0 01-1-1V9.5z" fill="#9AC136" />
+                <path d="M9 21V12h6v9" stroke="#0D3D1A" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+              <span style={{ fontFamily: 'Poppins, sans-serif', fontWeight: 600, fontSize: '16px', color: '#FFFFFF', whiteSpace: 'nowrap', letterSpacing: '0.2px' }}>Rajam Property Management</span>
             </div>
 
             {/* Main heading */}
-            <h1 ref={headingRef} className="font-quicksand font-bold text-white mb-6 leading-[1.2]" style={{ fontSize: 'clamp(40px, 5vw, 72px)', letterSpacing: '-0.8px', maxWidth: '689px' }}>
-              Your Property.<br />Fully Managed.<br /><span style={{ color: '#73B130' }}>Zero Hassle.</span>
+            <h1 ref={headingRef} className="font-quicksand font-bold text-white mb-6 leading-[1.2]" style={{ fontSize: 'clamp(32px, 4vw, 60px)', letterSpacing: '-0.8px', maxWidth: '689px' }}>
+              NRI Property Management in Bangalore Since 1995
             </h1>
 
             {/* Updated description */}
@@ -264,42 +262,69 @@ export default function Hero() {
                   {errors.email && <p className="font-poppins text-red-500 text-xs mt-1">{errors.email}</p>}
                 </div>
 
-                {/* Services dropdown — replaces Property Type + Property Location */}
+                {/* Property Type dropdown */}
                 <div>
-                  <label className="font-poppins font-semibold text-[#1A1C1E] text-sm block mb-1.5">Services you are looking for?</label>
+                  <label className="font-poppins font-semibold text-[#1A1C1E] text-sm block mb-1.5">Property Type</label>
                   <div className="relative">
                     <select
-                      value={formData.service}
-                      onChange={e => { setFormData({ ...formData, service: e.target.value }); if (errors.service) setErrors({ ...errors, service: '' }) }}
-                      className={`w-full h-12 rounded-lg px-4 font-poppins text-base border-0 outline-none appearance-none transition-all ${errors.service ? 'bg-[#F3F3F6] ring-2 ring-red-400' : 'bg-[#F3F3F6] focus:ring-2 focus:ring-[#73B130]/30'} ${formData.service ? 'text-[#1A1C1E]' : 'text-[#6B7280]'}`}
+                      value={formData.propertyType}
+                      onChange={e => { setFormData({ ...formData, propertyType: e.target.value }); if (errors.propertyType) setErrors({ ...errors, propertyType: '' }) }}
+                      className={`w-full h-12 rounded-lg px-4 font-poppins text-base border-0 outline-none appearance-none transition-all ${errors.propertyType ? 'bg-[#F3F3F6] ring-2 ring-red-400' : 'bg-[#F3F3F6] focus:ring-2 focus:ring-[#73B130]/30'} ${formData.propertyType ? 'text-[#1A1C1E]' : 'text-[#6B7280]'}`}
                     >
-                      <option value="">Select a service</option>
-                      <option value="Property Management">Property Management</option>
-                      <option value="Property Buying Assistance">Property Buying Assistance</option>
-                      <option value="Property Selling Assistance">Property Selling Assistance</option>
-                      <option value="Rental Assistance">Rental Assistance</option>
-                      <option value="Home Renovation">Home Renovation</option>
-                      <option value="Home Repair and Maintenance">Home Repair and Maintenance</option>
-                      <option value="Plot Monitoring">Plot Monitoring</option>
-                      <option value="Deep Cleaning">Deep Cleaning</option>
+                      <option value="">Select property type</option>
+                      <option value="Apartment">Apartment</option>
+                      <option value="Villa">Villa</option>
+                      <option value="Plot">Plot</option>
+                      <option value="Commercial">Commercial</option>
+                      <option value="Other">Other</option>
                     </select>
                     <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none">
                       <svg width="12" height="8" viewBox="0 0 12 8" fill="none"><path d="M1 1l5 5 5-5" stroke="#6B7280" strokeWidth="1.8" strokeLinecap="round" /></svg>
                     </div>
                   </div>
-                  {errors.service && <p className="font-poppins text-red-500 text-xs mt-1">{errors.service}</p>}
+                  {errors.propertyType && <p className="font-poppins text-red-500 text-xs mt-1">{errors.propertyType}</p>}
                 </div>
 
-                {/* Message textarea */}
+                {/* Property Location dropdown */}
                 <div>
-                  <label className="font-poppins font-semibold text-[#1A1C1E] text-sm block mb-1.5">Message</label>
-                  <textarea
-                    placeholder="Tell us more about your property or requirements..."
-                    value={formData.message}
-                    onChange={e => setFormData({ ...formData, message: e.target.value })}
-                    rows={3}
-                    className="w-full bg-[#F3F3F6] rounded-lg px-4 py-3 font-poppins text-base text-[#1A1C1E] placeholder-[#6B7280] border-0 outline-none transition-all focus:ring-2 focus:ring-[#73B130]/30 resize-none"
-                  />
+                  <label className="font-poppins font-semibold text-[#1A1C1E] text-sm block mb-1.5">Property Location</label>
+                  <div className="relative">
+                    <select
+                      value={formData.propertyLocation}
+                      onChange={e => { setFormData({ ...formData, propertyLocation: e.target.value, propertyLocationOther: '' }); if (errors.propertyLocation) setErrors({ ...errors, propertyLocation: '' }) }}
+                      className={`w-full h-12 rounded-lg px-4 font-poppins text-base border-0 outline-none appearance-none transition-all ${errors.propertyLocation ? 'bg-[#F3F3F6] ring-2 ring-red-400' : 'bg-[#F3F3F6] focus:ring-2 focus:ring-[#73B130]/30'} ${formData.propertyLocation ? 'text-[#1A1C1E]' : 'text-[#6B7280]'}`}
+                    >
+                      <option value="">Select a location</option>
+                      <option value="Whitefield">Whitefield</option>
+                      <option value="Koramangala">Koramangala</option>
+                      <option value="Indiranagar">Indiranagar</option>
+                      <option value="HSR Layout">HSR Layout</option>
+                      <option value="Marathahalli">Marathahalli</option>
+                      <option value="Electronic City">Electronic City</option>
+                      <option value="Sarjapur Road">Sarjapur Road</option>
+                      <option value="JP Nagar">JP Nagar</option>
+                      <option value="Jayanagar">Jayanagar</option>
+                      <option value="Hebbal">Hebbal</option>
+                      <option value="Yelahanka">Yelahanka</option>
+                      <option value="Bannerghatta Road">Bannerghatta Road</option>
+                      <option value="BTM Layout">BTM Layout</option>
+                      <option value="Bellandur">Bellandur</option>
+                      <option value="Other">Other</option>
+                    </select>
+                    <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none">
+                      <svg width="12" height="8" viewBox="0 0 12 8" fill="none"><path d="M1 1l5 5 5-5" stroke="#6B7280" strokeWidth="1.8" strokeLinecap="round" /></svg>
+                    </div>
+                  </div>
+                  {errors.propertyLocation && <p className="font-poppins text-red-500 text-xs mt-1">{errors.propertyLocation}</p>}
+                  {formData.propertyLocation === 'Other' && (
+                    <input
+                      type="text"
+                      placeholder="Please specify your location"
+                      value={formData.propertyLocationOther}
+                      onChange={e => setFormData({ ...formData, propertyLocationOther: e.target.value })}
+                      className="w-full h-[47px] bg-[#F3F3F6] rounded-lg px-4 font-poppins text-base text-[#1A1C1E] placeholder-[#6B7280] border-0 outline-none transition-all focus:ring-2 focus:ring-[#73B130]/30 mt-2"
+                    />
+                  )}
                 </div>
 
                 {/* Submit */}
