@@ -174,7 +174,7 @@ export default function Hero() {
               <iframe
                 src="https://eventshare.pana.space/f/20f2bbb6-6d0d-493d-8d3d-10054ab8d29d?embed=1"
                 width="100%"
-                height="600"
+                height="700"
                 frameBorder="0"
                 title="Registration form"
                 data-mathiverse-form="embed"
