@@ -1,5 +1,6 @@
 'use client'
 import { useEffect, useRef } from 'react'
+import Script from 'next/script'
 import gsap from 'gsap'
 
 function FloatingBadge() {
@@ -124,32 +125,6 @@ export default function Hero() {
     })
     return () => ctx.revert()
   }, [])
-  // Pana attribution — responds to postMessage requests from the embed
-  useEffect(() => {
-    const handler = (e: MessageEvent) => {
-      const d = e.data
-      if (!d || d.type !== 'mathiverse_form_attribution_request') return
-      try {
-        const u = new URL(window.location.href)
-        u.hash = ''
-        const p: Record<string, string> = {
-          type: 'form_attribution',
-          landing_url: u.toString().slice(0, 2048),
-        }
-        if (document.referrer) p.referrer = document.referrer.slice(0, 2048)
-        const q = new URLSearchParams(window.location.search)
-        ;['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content',
-          'utm_id', 'utm_creative_format', 'utm_marketing_tactic'].forEach((k) => {
-          const v = q.get(k)
-          if (v && String(v).trim()) p[k] = String(v).trim().slice(0, 2048)
-        })
-        ;(e.source as Window).postMessage(p, e.origin)
-      } catch (_) {}
-    }
-    window.addEventListener('message', handler)
-    return () => window.removeEventListener('message', handler)
-  }, [])
-
 
   return (
     <section id="consultation" className="relative min-h-screen pt-[76px] overflow-hidden">
@@ -194,13 +169,15 @@ export default function Hero() {
           {/* ── Right column — Form ──────────────────────────────────── */}
           <div ref={formWrapRef} className="relative w-full lg:w-[480px] flex-shrink-0 mt-20 lg:mt-0">
             <div className="absolute -top-14 -left-14 z-20 pointer-events-none"><FloatingBadge /></div>
-            <div id="consultation-form" style={{ width: '100%', height: '700px', overflow: 'hidden', background: 'transparent', borderRadius: '0.75rem' }}>
+            <Script src="https://eventshare.pana.space/embed.js" strategy="afterInteractive" />
+            <div id="consultation-form" style={{ width: '100%', overflow: 'hidden', background: 'transparent', borderRadius: '0.75rem' }}>
               <iframe
-                src="https://events.pana.space/f/20f2bbb6-6d0d-493d-8d3d-10054ab8d29d?embed=1&utm_source=mathiverse&utm_medium=form&utm_campaign=website-bangalore&utm_content=rajam-property"
+                src="https://eventshare.pana.space/f/20f2bbb6-6d0d-493d-8d3d-10054ab8d29d?embed=1"
                 width="100%"
-                height="750"
+                height="600"
                 frameBorder="0"
                 title="Registration form"
+                data-mathiverse-form="embed"
                 style={{ display: 'block', border: 'none' }}
               />
             </div>
