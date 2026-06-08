@@ -1,9 +1,11 @@
 'use client'
+import { useModal } from '@/lib/modalContext'
 
 export default function FloatingCTA() {
+  const { openModal } = useModal()
   return (
-    <a
-      href="#consultation-form"
+    <button
+      onClick={openModal}
       className="fixed bottom-[1rem] left-4 right-4 z-50 flex md:hidden items-center justify-center rounded-lg text-white font-poppins font-semibold text-base transition-all hover:opacity-90 active:scale-[0.98]"
       style={{
         background: 'linear-gradient(103.43deg, #0D631B 0%, #2E7D32 100%)',
@@ -13,6 +15,6 @@ export default function FloatingCTA() {
       }}
     >
       Book Free Callback
-    </a>
+    </button>
   )
 }

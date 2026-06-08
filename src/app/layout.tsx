@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Script from 'next/script'
 import './globals.css'
+import Providers from '@/components/Providers'
 
 export const metadata: Metadata = {
   title: "Rajam Property | Bangalore's #1 Property Management Service",
@@ -40,7 +41,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           />
         </noscript>
         {/* End Google Tag Manager (noscript) */}
-        {children}
+        <Providers>{children}</Providers>
       </body>
     </html>
   )

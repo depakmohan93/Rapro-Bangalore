@@ -1,6 +1,9 @@
+'use client'
 import Image from 'next/image'
+import { useModal } from '@/lib/modalContext'
 
 export default function CTA2() {
+  const { openModal } = useModal()
   return (
     <section className="w-full bg-white flex items-center justify-center py-[60px] md:py-[100px] px-5 md:px-20">
       <div className="relative w-full overflow-hidden flex flex-col items-center justify-center" style={{ maxWidth: '64rem', minHeight: '20rem', boxShadow: '0px 25px 50px -12px rgba(0,0,0,0.25)', borderRadius: '2rem', padding: '3rem 2rem' }}>
@@ -10,8 +13,8 @@ export default function CTA2() {
             Explore our Property Management Services
           </h2>
           <div className="flex justify-center pt-2 w-full">
-            <a
-              href="#consultation-form"
+            <button
+              onClick={openModal}
               className="text-black bg-white relative overflow-hidden inline-flex items-center justify-center rounded-md font-semibold transition-colors cursor-pointer
                 py-[10px] px-6 text-base
                 before:absolute before:inset-0 before:rounded-[inherit]
@@ -24,7 +27,7 @@ export default function CTA2() {
                 hover:before:bg-[position:-100%_0,0_0]"
             >
               Get a free callback
-            </a>
+            </button>
           </div>
         </div>
       </div>

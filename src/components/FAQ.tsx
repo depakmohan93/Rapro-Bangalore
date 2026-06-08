@@ -113,15 +113,15 @@ export default function FAQ() {
   useEffect(() => {
     if (typeof window === 'undefined') return
     const ctx = gsap.context(() => {
-      gsap.set([headingRef.current, subRef.current, itemsRef.current], { y: 50, opacity: 0 })
+      gsap.set([headingRef.current, subRef.current, itemsRef.current], { y: 30, opacity: 0 })
 
       const tl = gsap.timeline({
-        scrollTrigger: { trigger: headingRef.current, start: 'top 80%', once: true },
+        scrollTrigger: { trigger: headingRef.current, start: 'top 92%', once: true },
       })
 
-      tl.to(headingRef.current, { y: 0, opacity: 1, duration: 1.0, ease: 'power4.out' })
-        .to(subRef.current, { y: 0, opacity: 1, duration: 0.9, ease: 'power4.out' }, '-=0.6')
-        .to(itemsRef.current, { y: 0, opacity: 1, duration: 0.9, ease: 'power4.out' }, '-=0.5')
+      tl.to(headingRef.current, { y: 0, opacity: 1, duration: 0.9, ease: 'power3.out' }, 0)
+        .to(subRef.current, { y: 0, opacity: 1, duration: 0.9, ease: 'power3.out' }, 0)
+        .to(itemsRef.current, { y: 0, opacity: 1, duration: 0.9, ease: 'power3.out' }, 0)
     })
 
     return () => ctx.revert()

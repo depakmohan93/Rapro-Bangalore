@@ -28,16 +28,20 @@ export default function Benefits() {
     const cards = cardRefs.current.filter(Boolean)
 
     const ctx = gsap.context(() => {
-      gsap.set([heading, desc], { y: 50, opacity: 0 })
-      gsap.set(cards, { y: 70, opacity: 0 })
+      gsap.set([heading, desc], { y: 30, opacity: 0 })
+      gsap.set(cards, { y: 40, opacity: 0 })
 
-      const tl = gsap.timeline({
-        scrollTrigger: { trigger: heading, start: 'top 80%', once: true },
+      gsap.to([heading, desc], {
+        y: 0, opacity: 1, duration: 0.9, ease: 'power3.out',
+        scrollTrigger: { trigger: heading, start: 'top 92%', once: true },
       })
 
-      tl.to(heading, { y: 0, opacity: 1, duration: 1.0, ease: 'power4.out' })
-        .to(desc, { y: 0, opacity: 1, duration: 0.9, ease: 'power4.out' }, '-=0.6')
-        .to(cards, { y: 0, opacity: 1, duration: 0.85, stagger: { each: 0.12, ease: 'power2.inOut' }, ease: 'power4.out' }, '+=0.05')
+      if (cards.length) {
+        gsap.to(cards, {
+          y: 0, opacity: 1, duration: 0.8, stagger: { each: 0.1, ease: 'power2.inOut' }, ease: 'power3.out',
+          scrollTrigger: { trigger: cards[0], start: 'top 92%', once: true },
+        })
+      }
     })
 
     return () => ctx.revert()

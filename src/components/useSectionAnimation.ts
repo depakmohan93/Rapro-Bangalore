@@ -28,50 +28,38 @@ export function useSectionAnimation<
     const cards = cardsRef.current.filter(Boolean)
 
     const ctx = gsap.context(() => {
-      // Initial hidden state
-      gsap.set([heading, desc].filter(Boolean), { y: 50, opacity: 0 })
-      gsap.set(cards, { y: 70, opacity: 0 })
+      gsap.set([heading, desc].filter(Boolean), { y: 30, opacity: 0 })
+      gsap.set(cards, { y: 40, opacity: 0 })
 
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: heading || desc,
-          start: 'top 80%',
-          once: true,
-        },
-      })
-
-      // Heading slides in — longer duration, smooth ease
-      if (heading) {
-        tl.to(heading, {
-          y: 0,
-          opacity: 1,
-          duration: 1.0,
-          ease: 'power4.out',
-        })
-      }
-
-      // Description follows closely behind
-      if (desc) {
-        tl.to(desc, {
+      // Heading + desc trigger together on heading
+      if (heading || desc) {
+        gsap.to([heading, desc].filter(Boolean), {
           y: 0,
           opacity: 1,
           duration: 0.9,
-          ease: 'power4.out',
-        }, '-=0.6')
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: heading || desc,
+            start: 'top 92%',
+            once: true,
+          },
+        })
       }
 
-      // Cards stagger in as a wave — tight stagger, smooth ease
+      // Cards trigger independently when they enter the viewport
       if (cards.length) {
-        tl.to(cards, {
+        gsap.to(cards, {
           y: 0,
           opacity: 1,
-          duration: 0.85,
-          stagger: {
-            each: 0.1,       // 100ms between each card — feels like one fluid wave
-            ease: 'power2.inOut',
+          duration: 0.8,
+          stagger: { each: 0.1, ease: 'power2.inOut' },
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: cards[0],
+            start: 'top 92%',
+            once: true,
           },
-          ease: 'power4.out',
-        }, '+=0.05')
+        })
       }
     })
 

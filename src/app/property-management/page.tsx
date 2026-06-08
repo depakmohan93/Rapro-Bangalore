@@ -13,11 +13,17 @@ import Footer from '@/components/Footer'
 import FloatingWidgets from '@/components/FloatingWidgets'
 import FloatingCTA from '@/components/FloatingCTA'
 
-export default function Home() {
+export const metadata = {
+  title: "Rajam Property | Bangalore's #1 Property Management Service",
+  description:
+    "Award-winning property management in Bangalore. Trusted by 1000+ NRIs. No signup fee, verified tenants, 12+ services in one.",
+}
+
+export default function PropertyManagementPage() {
   return (
     <main>
       <Navbar />
-      <Hero />
+      <Hero headingLine2="Property Management" />
       <Partners />
       <Services />
       <CTA />
