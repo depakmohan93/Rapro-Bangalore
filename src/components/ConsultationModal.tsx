@@ -1,6 +1,6 @@
 'use client'
 import { useState, useEffect, useRef } from 'react'
-import { useRouter } from 'next/navigation'
+import { useRouter, usePathname } from 'next/navigation'
 import { useModal } from '@/lib/modalContext'
 
 function validateIndianPhone(phone: string): string | null {
@@ -24,6 +24,8 @@ function validateName(name: string): string | null {
 export default function ConsultationModal() {
   const { isOpen, closeModal } = useModal()
   const router = useRouter()
+  const pathname = usePathname()
+  const isPropertyManagement = pathname === '/property-management'
   const overlayRef = useRef<HTMLDivElement>(null)
   const firstInputRef = useRef<HTMLInputElement>(null)
 
@@ -117,7 +119,7 @@ export default function ConsultationModal() {
       <div
         className="relative w-full bg-white rounded-2xl overflow-y-auto"
         style={{
-          maxWidth: '480px',
+          maxWidth: isPropertyManagement ? '560px' : '480px',
           maxHeight: '90vh',
           boxShadow: '0px 25px 60px -12px rgba(0,0,0,0.4)',
           animation: 'modal-in 0.25s cubic-bezier(0.34,1.56,0.64,1) both',
@@ -134,6 +136,19 @@ export default function ConsultationModal() {
           </svg>
         </button>
 
+        {isPropertyManagement ? (
+          <div className="px-6 pb-6 pt-10">
+            <script src="https://eventshare.pana.space/embed.js" async></script>
+            <iframe
+              src="https://eventshare.pana.space/f/7537349d-65ac-47ed-95ae-cc48fbbd50cf?embed=1"
+              width="100%"
+              height="600"
+              frameBorder="0"
+              title="Registration form"
+              data-mathiverse-form="embed"
+            />
+          </div>
+        ) : (
         <form
           id="consultation-form"
           onSubmit={handleSubmit}
@@ -316,6 +331,7 @@ export default function ConsultationModal() {
             </button>
           </div>
         </form>
+        )}
       </div>
 
       <style>{`
