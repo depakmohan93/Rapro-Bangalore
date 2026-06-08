@@ -1,7 +1,7 @@
 'use client'
 import { useEffect, useRef } from 'react'
 import Script from 'next/script'
-import { usePathname } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 import { useModal } from '@/lib/modalContext'
 
 const EMBED_URLS: Record<string, string> = {
@@ -14,6 +14,7 @@ const DEFAULT_EMBED_URL =
 export default function ConsultationModal() {
   const { isOpen, closeModal } = useModal()
   const pathname = usePathname()
+  const router = useRouter()
   const overlayRef = useRef<HTMLDivElement>(null)
 
   const embedUrl = EMBED_URLS[pathname] ?? DEFAULT_EMBED_URL
@@ -36,6 +37,33 @@ export default function ConsultationModal() {
     if (isOpen) window.addEventListener('keydown', onKey)
     return () => window.removeEventListener('keydown', onKey)
   }, [isOpen, closeModal])
+
+  // Redirect to /thank-you on successful Mathiverse form submission
+  useEffect(() => {
+    const handleMessage = (e: MessageEvent) => {
+      if (process.env.NODE_ENV === 'development') {
+        console.log('[Mathiverse postMessage]', e.origin, e.data)
+      }
+      if (!e.origin.includes('eventshare.pana.space') && !e.origin.includes('pana.space')) return
+      const data = e.data
+      if (!data) return
+      const isSubmission =
+        data?.type === 'form:submitted' ||
+        data?.type === 'form-submitted' ||
+        data?.type === 'submitted' ||
+        data?.type === 'success' ||
+        data?.event === 'submitted' ||
+        data?.event === 'form:submitted' ||
+        data?.status === 'submitted' ||
+        data?.status === 'success'
+      if (isSubmission) {
+        closeModal()
+        router.push('/thank-you')
+      }
+    }
+    window.addEventListener('message', handleMessage)
+    return () => window.removeEventListener('message', handleMessage)
+  }, [closeModal, router])
 
   if (!isOpen) return null
 
