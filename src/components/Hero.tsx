@@ -8,7 +8,7 @@ import { useModal } from '@/lib/modalContext'
 function StatBelt() {
   return (
     <div
-      className="flex flex-wrap items-stretch justify-center gap-0 mt-10"
+      className="flex flex-wrap items-stretch justify-center gap-0 mt-6 lg:mt-10"
       style={{
         background: 'rgba(0,0,0,0.60)',
         backdropFilter: 'blur(8px)',
@@ -326,12 +326,12 @@ export default function Hero({ headingLine2 = 'NRI Property Management' }: { hea
       <div className="absolute inset-0" style={{ background: 'rgba(0,0,0,0.52)' }} />
 
       {/* Content */}
-      <div className="relative z-10 flex flex-col items-center justify-center text-center px-5 md:px-10 pt-14 pb-16 md:pt-20 md:pb-20 max-w-[1200px] mx-auto w-full">
+      <div className="relative z-10 flex flex-col items-center justify-center text-center px-5 md:px-10 pt-10 pb-10 md:pt-12 md:pb-12 lg:pt-20 lg:pb-20 max-w-[1200px] mx-auto w-full">
 
         {/* Trust badge */}
         <div
           ref={badgeRef}
-          className="inline-flex items-center gap-2.5 mb-7"
+          className="inline-flex items-center gap-2.5 mb-4 lg:mb-7"
           style={{
             background: 'rgba(13,61,26,0.9)',
             border: '2px solid #9AC136',
@@ -360,7 +360,7 @@ export default function Hero({ headingLine2 = 'NRI Property Management' }: { hea
         {/* Heading */}
         <h1
           ref={headingRef}
-          className="font-quicksand font-bold text-white mb-5"
+          className="font-quicksand font-bold text-white mb-3 lg:mb-5"
           style={{
             fontSize: 'clamp(28px, 3.8vw, 52px)',
             lineHeight: 1.18,
@@ -378,7 +378,7 @@ export default function Hero({ headingLine2 = 'NRI Property Management' }: { hea
         {/* Description */}
         <p
           ref={subRef}
-          className="font-poppins text-white mb-9"
+          className="font-poppins text-white mb-5 lg:mb-9"
           style={{
             fontWeight: 400,
             fontSize: 'clamp(15px, 1.8vw, 18px)',
