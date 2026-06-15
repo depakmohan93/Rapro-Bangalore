@@ -10,6 +10,7 @@ export default function FloatingWidgets() {
     <div className="fixed right-5 z-50 flex flex-col gap-3 bottom-[88px] md:bottom-6">
       {/* Phone Call */}
       <a
+        id="floating-call-btn"
         href={`tel:${PHONE}`}
         aria-label="Call us"
         className="w-14 h-14 rounded-full flex items-center justify-center shadow-lg transition-transform hover:scale-110 active:scale-95"
@@ -25,6 +26,7 @@ export default function FloatingWidgets() {
 
       {/* WhatsApp */}
       <a
+        id="floating-whatsapp-btn"
         href={`https://wa.me/${PHONE}?text=${WHATSAPP_MESSAGE}`}
         target="_blank"
         rel="noopener noreferrer"
