@@ -14,7 +14,7 @@ export default function FloatingWidgets() {
         href={`tel:${PHONE}`}
         aria-label="Call us"
         className="w-14 h-14 rounded-full flex items-center justify-center shadow-lg transition-transform hover:scale-110 active:scale-95"
-        style={{ background: '#0D631B' }}
+        style={{ background: '#73B130' }}
       >
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
           <path
